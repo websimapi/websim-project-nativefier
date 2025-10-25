@@ -1,0 +1,22 @@
+{
+  "name": "websim-nativefier-bridge",
+  "version": "1.5.0",
+  "description": "A local server to build native apps from websim projects.",
+  "main": "index.js",
+  "scripts": {
+    "start:bridge": "node index.js",
+    "start:server": "node exe-download-server.js",
+    "start": "concurrently -k -n bridge,server -c auto,auto \"npm run start:bridge\" \"npm run start:server\""
+  },
+  "author": "",
+  "license": "ISC",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "rimraf": "^5.0.7",
+    "ws": "^8.17.1"
+  }
+}
+
