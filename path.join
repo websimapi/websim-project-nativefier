@@ -1,0 +1,36 @@
+const msg = (m) => ws && ws.send(JSON.stringify({ type: 'build_progress', message: m, requestId }));
+
+msg("Initializing Devvit project...");
+
+const pkg = {
+    name: safeName.toLowerCase(),
+    version: "1.0.0",
+    private: true,
+    scripts: {
+        "build": "npm run build:client && npm run build:server",
+        "build:client": "vite build --outDir ../../dist/client -c src/client/vite.config.ts",
+        "build:server": "vite build --outDir ../../dist/server -c src/server/vite.config.ts"
+    },
+    devDependencies: {
+        "@devvit/dev-vit": "^0.11.13",
+        "vite": "^5.0.0",
+    },
+};
+fs.writeFileSync(path.join(workDir, "package.json"), JSON.stringify(pkg, null, 2));
+
+const devvitJson = {
+    name: safeName,
+    version: "1.0.0",
+    entrypoints: {
+        client: "dist/client/index.html",
+        server: "dist/server/index.cjs",
+    },
+};
+fs.writeFileSync(path.join(workDir, "devvit.json"), JSON.stringify(devvitJson, null, 2));
+
+// Client setup
+const clientDir = path.join(workDir, "src", "client");
+fs.mkdirSync(clientDir, { recursive: true });
+
+const indexHtml = `<!DOCTYPE html>
+

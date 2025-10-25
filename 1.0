@@ -1,0 +1,4 @@
+// Create dummy files for build process
+fs.writeFileSync(path.join(clientDir, "main.ts"), `// This file is a placeholder for the build process.`);
+fs.writeFileSync(path.join(clientDir, "vite.config.ts"), `import { defineConfig } from 'vite';
+
