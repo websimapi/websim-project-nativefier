@@ -8,6 +8,7 @@ export async function generateAndDownloadBridge() {
         'forge-builder.js',
         'desktop-builder.js',
         'utils.js',
+        'reddit-builder.js',
         'android/android-builder.js',
         'android/android-sdk-helpers.js',
         'android/java-helpers.js',
